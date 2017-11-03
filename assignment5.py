@@ -1,4 +1,4 @@
-#!/usr/bin/python
+﻿#!/usr/bin/python
 
 import copy
 import itertools
@@ -110,6 +110,19 @@ class CSP:
         iterations of the loop.
         """
         # TODO: IMPLEMENT THIS
+        if assignment is complete then return assignment
+        var ← SELECT-UNASSIGNED-VARIABLE(csp)
+        for each value in ORDER-DOMAIN-VALUES(var , assignment, csp) do
+        if value is consistent with assignment then
+        add {var = value} to assignment
+        inferences ← INFERENCE(csp, var , value)
+        if inferences = failure then
+        add inferences to assignment
+        result ← BACKTRACK(assignment, csp)
+        if result = failure then
+        return result
+        remove {var = value} and inferences from assignment
+        return failure
         pass
 
     def select_unassigned_variable(self, assignment):
